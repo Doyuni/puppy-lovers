@@ -1,0 +1,64 @@
+<head>
+    <!-- stylesheets -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+
+        <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <style>
+        .container {
+            text-align: center;
+            margin: 100px;
+            border: 1px solid black;
+            padding : 30px;
+            font-size : 25px;
+        }
+        
+        .container p {
+            
+        }
+        
+        .btn {
+            width:100%;
+        }
+    </style>
+    
+</head>
+
+<body>
+    
+<form action="{% url 'pet_supply_transactions_create' %}" method='POST'>
+    {% csrf_token %}
+    <div class="container">
+        {{ form.as_p }}
+    </div>
+    <div class="btn">
+        <button type="submit">
+            제출
+        </button>   
+    </div>
+    
+</form>
+
+<script>
+$(document).ready(function() {
+    var hidden_value = $( "#id_transactable_id option:selected" ).text();
+    $("#id_transactable_name").val(hidden_value);
+    
+    $("#id_deadline").datepicker({
+        dateFormat: 'yy-mm-dd',
+        prevText: '이전 달',
+        nextText: '다음 달'
+    });
+    
+    $( "#id_transactable_id" ).change(function() {
+        var hidden_value = $( "#id_transactable_id option:selected" ).text();
+        $("#id_transactable_name").val(hidden_value);
+    });
+})
+</script>
+</body>

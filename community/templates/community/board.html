@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang= "ko">
+    <head>
+        <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+
+        <title>상세 페이지</title>
+        
+    </head>
+    <body>
+        <div class="container">
+        <div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading">게시글 목록</div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>날짜</th>
+            <th>조회수</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if post_list %}
+            {% for post in post_list %}
+        <tr>
+            <td>{{ post.id }}</td>
+            <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></td>
+            <td>{{ post.author_name }}</td>
+            <td>{{ post.created_at }}</td>
+            <td>{{ post.hits }}</td>
+        </tr>
+            {% endfor %}
+        {% else %}
+        <p>
+            게시글이 아직 없습니다.
+        </p>
+        {% endif %}
+    </tbody>
+</table>
+</div>
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+            </div>
+    </body>
+    </html>

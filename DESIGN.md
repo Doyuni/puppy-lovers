@@ -1,0 +1,45 @@
+- 사용하는 시나리오
+    - 1) 반려동물 분양(물물교환)
+    - 2) 로그인/로그아웃
+    - 3) 포스트를 게시한다 - 금도윤
+        - 영상, 이미지
+    - 4) 포스트에 대한 추천 기능
+        - 추천 수 10 이상 올라가면 추천글 목록에 올라감
+    - 5) 댓글 - 금도윤
+    - 6) 장소를 태그할 수 있는 기능
+    - 7) 장소를 태그한 포스트를 보여주는 기능
+    - 8) 후기, 평점 (장소, 애완용품)
+    - 9) 반려동물 프로필 편집 기능
+    - 10) 활동 많이 하면 포인트 쌓임 
+    - 11) 사이트 틀 구성하기(html+css) - 구글드라이브에서 !
+
+- 설계
+    - 모델
+        - Transaction
+            - 외래키 Transationable
+                - Pet
+                - Item
+            - 외래키 User
+        - Pet
+            - profile
+                - 생년
+            - category : species ← single tag로 취급
+        - User
+            - Have Multiple Pet
+            - Have Multiple Items
+            - Have Multiple Posts
+        - Item
+            - suitable for : species
+        - Place
+        - Review
+        - Reputation
+        
+- Django App List
+  - community
+    - post
+  - greeting
+    - 소개글
+  - custom_auth
+    - 인증
+  - puppy_sale
+    - 분양

@@ -1,0 +1,24 @@
+    
+{% extends "custom_auth/base_generic.html" %}
+<style>
+    
+</style>
+{% block main_content %}
+
+
+{% for field in form %}
+    {{ field.errors }}
+{% endfor %}
+
+    <form class="form-horizontal" action = "/auth/signup" method = "POST">
+        <legend>가입 신청</legend>
+            {% csrf_token %}
+            {{ form.as_p }}
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-primary">회원가입을 신청합니다.</button>
+            </div>
+        </div>
+    </form>    
+
+{% endblock %}
